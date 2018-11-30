@@ -138,10 +138,10 @@ def imp_run(cov_fasta, proc_num,k_num,freq_threshold):
 
     sttime = time.time()
 
-    with open('./panel.pkl.bz2','rb') as a:
+    with open('./panel.bz2','rb') as panel:
         print "ALL Haplogroup Panel (ver:0.1)"
         print "Loading Panel Data ...."
-        out_dict=pickle.loads(bz2.decompress(a.read()))
+        panel_dict=pickle.loads(bz2.decompress(panel.read()))
 
     output_csv=os.path.splitext(os.path.abspath(cov_fasta))[0]+'_stats.csv'
 
@@ -179,7 +179,7 @@ def imp_run(cov_fasta, proc_num,k_num,freq_threshold):
     print "Detected missing sites : {0} -> {1}% / mitogenome".format(len(missing_sites),round((float(len(missing_sites))/mitogenome_site)*100,2))
 
     # These sites are not used for the calculation.
-    non_informative_sites = out_dict['NonInfo']
+    non_informative_sites = panel_dict['NonInfo']
     deletion_sites=list(set(missing_sites+non_informative_sites))
     deletion_sites.sort()
 
@@ -201,7 +201,7 @@ def imp_run(cov_fasta, proc_num,k_num,freq_threshold):
     #Divide each sequence of group panel into k-mer array based on the window size.
     k_mer_db2={}
 
-    for k,v in out_dict['Panel'].items():
+    for k,v in panel_dict['Panel'].items():
         split_list=[]
         split_list=split_str(trans_delete(v['seq']),window_size)
         k_mer_db2[k]=split_list
@@ -219,7 +219,7 @@ def imp_run(cov_fasta, proc_num,k_num,freq_threshold):
         non_missing_sites_window[i]=[]
 
     proc=proc_num
-    panel_count = len(out_dict['Panel'])
+    panel_count = len(panel_dict['Panel'])
     L = panel_count
     print "Calculating distances (processes:{0}) ...".format(proc)
 
@@ -266,8 +266,8 @@ def imp_run(cov_fasta, proc_num,k_num,freq_threshold):
         seq_id=[k2 for k2,v2 in sorted(distance_dict2[k].items(),key=lambda x:x[1],reverse=True)]
         seq_id=seq_id[0:k_num]
         for v3 in v:
-            if float(Counter([out_dict['Panel'][i]['seq'][v3] for i in seq_id]).most_common(1)[0][1])/len([out_dict['Panel'][i]['seq'][v3] for i in seq_id]) > freq_threshold:
-                impute_list[v3]=Counter([out_dict['Panel'][i]['seq'][v3] for i in seq_id]).most_common(1)[0][0]
+            if float(Counter([panel_dict['Panel'][i]['seq'][v3] for i in seq_id]).most_common(1)[0][1])/len([panel_dict['Panel'][i]['seq'][v3] for i in seq_id]) > freq_threshold:
+                impute_list[v3]=Counter([panel_dict['Panel'][i]['seq'][v3] for i in seq_id]).most_common(1)[0][0]
             else:
                 impute_list[v3]='N'
 
