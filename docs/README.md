@@ -15,6 +15,11 @@ An imputation tool for human mitochondrial genome based on shared allele pairwis
 
 `mitoimp.py -i input.fasta [-k 5] [-f 0.7] [-t 4]`
 
+| Command | Description |
+| --- | --- |
+| `git status` | List all *new or modified* files |
+| `git diff` | Show file differences that **haven't been** staged |
+
 ## Version
 
 1.0.0 (beta)
