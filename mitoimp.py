@@ -22,7 +22,7 @@ parser.add_argument('-p',action='store',dest='panel',help='Panel sequences(.fast
 parser.add_argument('-w',action='store',dest='window',help='window-size(default:16569)',default=16569)
 parser.add_argument('-k',action='store',dest='k_num',help='K-number(default:5)',default=5)
 parser.add_argument('-f',action='store',dest='freq',help='The threshold frequency to determine a genotype. (default:0.7)',default=0.7)
-parser.add_argument('-no_aln', action='store_true', default=False,dest='align_switch',help='Set a switch to non-alignment mode (default:Disable)')
+parser.add_argument('-no_aln', action='store_true',dest='non_align',help='Set a switch to non-alignment mode (default:Disable)',default=False)
 parser.add_argument('-t',action='store',dest='threads',help='Multiprocessing numbers (default:The max number of CPU-threads available on your system)',default=-1)
 parser.add_argument('-v',action='version',version='Version : 1.0.0')
 
@@ -127,7 +127,7 @@ def align(seq,mafft_path,proc_num):
 
     return new_query
 
-def imp_run(cov_fasta, proc_num,k_num,freq_threshold):
+def imp_run(cov_fasta, proc_num,window_size,k_num,freq_threshold,non_align):
 
     #Check the enviroment
     if distutils.spawn.find_executable('mafft') == None:
@@ -157,7 +157,7 @@ def imp_run(cov_fasta, proc_num,k_num,freq_threshold):
     con_seq_id=fasta_record.header
     load_fasta.close()
 
-    if args.align_switch == False:
+    if non_align == False:
         con_seq=align(seq=os.path.abspath(cov_fasta),mafft_path=mafft_path,proc_num=proc_num)
     else:
         con_seq=fasta_record.sequence
@@ -182,8 +182,6 @@ def imp_run(cov_fasta, proc_num,k_num,freq_threshold):
     non_informative_sites = panel_dict['NonInfo']
     deletion_sites=list(set(missing_sites+non_informative_sites))
     deletion_sites.sort()
-
-    window_size = int(args.window)
 
     #k-mer splitting
     def split_str(s, n):
@@ -306,4 +304,4 @@ if __name__ == "__main__":
     else:
         t_num=multiprocessing.cpu_count()
 
-    imp_run(args.fasta,t_num,args.k_num,args.freq)
+    imp_run(cov_fasta=args.fasta,proc_num=t_num,window_size=args.window,k_num=args.k_num,freq_threshold=args.freq,non_align=args.non_align)
