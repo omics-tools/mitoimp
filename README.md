@@ -24,7 +24,7 @@ An imputation tool for human mitochondrial genome based on shared allele pairwis
 | **-w**       | window-size  (default: 16569)           | 1 〜 16569  |
 | **-k**       | k-number  (default: 5)     |1 〜 max of panel sequences  |
 | **-f**       | the threshold frequency to determine a genotype  (default: 0.7)  | 0.5 〜 1.0 |
-| **-t**       | multiprocessing numbers (detault: the max of available CPU-threads) | 1 〜 (max: -1) |
+| **-t**       | multiprocessing numbers (default: the max of available CPU-threads) | 1 〜 (max: -1) |
 | **-no_aln**  | set a switch to non-alignment mode  (default: Disable)  |  |
 | **-v**       | show program's version number and exit  | |
 | **-h**       | show this help message and exit         | |
