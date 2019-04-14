@@ -1,8 +1,8 @@
-MitoIMP: A computational framework for imputation of missing data in low-coverage human mitochondrial genome
+MitoIMP
 ====
 
 ## Description
-An imputation tool for human mitochondrial genome based on shared allele pairwise distances.
+MitoIMP: A computational framework for imputation of missing data in low-coverage human mitochondrial genome
 
 ## Requirement
 ・python 2.7 (pypy2)
