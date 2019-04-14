@@ -1,4 +1,4 @@
-mitoimp
+MitoIMP: A computational framework for imputation of missing data in low-coverage human mitochondrial genome
 ====
 
 ## Description
