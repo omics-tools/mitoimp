@@ -22,11 +22,11 @@ Clone this repository into your local machine
 
 `mitoimp.py -i input.fasta [-k 5] [-f 0.7] [-t 4]`
 
-**Example:1**
+**Example1**
 
 `mitoimp.py -i ./sample_data/A_cov65.fasta -k 5 -f 0.7 -t 4`
 
-**Example:2**
+**Example2**
 
 `mitoimp.py -i ./sample_data/Z_cov85.fasta -k 5 -f 0.7 -t 4 -no_aln`
 
