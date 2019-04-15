@@ -9,6 +9,13 @@ MitoIMP: A computational framework for imputation of missing data in low-coverag
 
 ・[MAFFT](https://mafft.cbrc.jp/alignment/software/): Multiple alignment program for amino acid or nucleotide sequences
 
+  　Please refer to [the official site](https://mafft.cbrc.jp/alignment/software/) for details of the installation of MAFFT. 
+
+## Installation
+
+Clone this repository into your local machine  
+`git clone https://github.com/omics-tools/mitoimp.git`  
+
 ## Usage
 
 **Basic Usage**
