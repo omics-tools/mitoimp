@@ -24,15 +24,15 @@ Clone this repository into your local machine
 
 **Example1**
 
-`mitoimp.py -i ./sample_data/A_cov65.fasta -k 5 -f 0.7 -t 4`
+An imputed sequence and a summary table are output to the same directory as the input file.
 
-  An imputed sequence and a summary table are output to the same directory as the input file.
+`mitoimp.py -i ./sample_data/A_cov65.fasta -k 5 -f 0.7 -t 4`
 
 **Example2**
 
-`mitoimp.py -i ./sample_data/Z_cov85.fasta -k 5 -f 0.7 -t 4 -no_aln`
+If you want to use a sequence oriented to the rCRS position by other alignment software, please set -no_aln flag.
 
-  If you want to use a sequence oriented to the rCRS position by other alignment software, please set -no_aln flag.
+`mitoimp.py -i ./sample_data/Z_cov85.fasta -k 5 -f 0.7 -t 4 -no_aln`
 
 **optional arguments:**
 
