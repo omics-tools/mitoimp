@@ -7,7 +7,6 @@ import bz2
 from collections import Counter
 import multiprocessing as mp
 import argparse
-import numpy
 import csv
 import os.path
 import multiprocessing
