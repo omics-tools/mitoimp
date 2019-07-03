@@ -15,8 +15,8 @@ from subprocess import check_call
 import distutils.spawn
 import sys
 
-usage = 'mitoimp.py -i input.fasta <optional>\nVersion: 1.0.0\n'
-parser = argparse.ArgumentParser(usage=usage,description='MitoIMP:1.0.0')
+usage = 'mitoimp.py -i input.fasta <optional>\nVersion: 1.0.1\n'
+parser = argparse.ArgumentParser(usage=usage,description='MitoIMP:1.0.1')
 parser.add_argument('-i',action='store',dest='fasta',help='Query sequence(.fasta):Query will be automatically aligned with MAFFT.')
 parser.add_argument('-p',action='store',dest='panel',help='Panel sequences(.fasta)',default='ALL_panel')
 parser.add_argument('-w',action='store',dest='window',help='window-size(default:16569)',default=16569)
@@ -24,7 +24,7 @@ parser.add_argument('-k',action='store',dest='k_num',help='K-number(default:5)',
 parser.add_argument('-f',action='store',dest='freq',help='The threshold frequency to determine a genotype. (default:0.7)',default=0.7)
 parser.add_argument('-no_aln', action='store_true',dest='non_align',help='Set a switch to non-alignment mode (default:Disable)',default=False)
 parser.add_argument('-t',action='store',dest='threads',help='Multiprocessing numbers (default:The max number of CPU-threads available on your system)',default=-1)
-parser.add_argument('-v',action='version',version='Version : 1.0.0')
+parser.add_argument('-v',action='version',version='Version : 1.0.1')
 
 args = parser.parse_args()
 
@@ -36,8 +36,8 @@ print "                                                                         
 print "  　　     A computational framework for imputation of missing data          "
 print "                 in low-coverage human mitochondrial genome                 "
 print "                                                                            "
-print "                          > Version : 1.0.0 (beta)                          "
-print "                          > Date : 15, Apr., 2019                           "
+print "                          > Version : 1.0.1 (beta)                          "
+print "                          > Date : 3, July, 2019                           "
 print "                          > Written by K.I.                                 "
 print "                                                                            "
 print "============================================================================"
@@ -304,4 +304,4 @@ if __name__ == "__main__":
     else:
         t_num=multiprocessing.cpu_count()
 
-    imp_run(cov_fasta=args.fasta,proc_num=t_num,window_size=args.window,k_num=args.k_num,freq_threshold=args.freq,non_align=args.non_align)
+    imp_run(cov_fasta=args.fasta,proc_num=int(t_num),window_size=int(args.window),k_num=int(args.k_num),freq_threshold=float(args.freq),non_align=args.non_align)
