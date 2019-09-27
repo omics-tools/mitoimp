@@ -62,4 +62,4 @@ Koji Ishiya
 
 ## Citation
 
-Ishiya, K., Mizuno, F., Wang, L., & Ueda, S. (2019). MitoIMP: A Computational Framework for Imputation of Missing Data in Low-Coverage Human Mitochondrial Genome. Bioinformatics and biology insights.
+[Ishiya, K., Mizuno, F., Wang, L., & Ueda, S. (2019). MitoIMP: A Computational Framework for Imputation of Missing Data in Low-Coverage Human Mitochondrial Genome. Bioinformatics and biology insights.](https://journals.sagepub.com/doi/10.1177/1177932219873884)
